@@ -9,7 +9,7 @@ import fr.adaming.model.Client;
 @Local
 public interface IClientService {
 
-	public List<Client> getAllListClientService(Client cl);
+	public List<Client> getAllListClientService();
 
 	public Client addClientService(Client cl);
 

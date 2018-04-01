@@ -15,9 +15,9 @@ public class ClientServiceImpl implements IClientService {
 	private IClientDao ClientDao;
 
 	@Override
-	public List<Client> getAllListClientService(Client cl) {
+	public List<Client> getAllListClientService() {
 
-		return ClientDao.getAllListClient(cl);
+		return ClientDao.getAllListClient();
 	}
 
 	@Override

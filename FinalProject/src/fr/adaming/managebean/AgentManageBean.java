@@ -1,4 +1,4 @@
-package fr.adaming.managedbean;
+package fr.adaming.managebean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -38,6 +38,7 @@ public class AgentManageBean implements Serializable {
 	private List<Categorie> listeCetegorie;;
 	private List<Produit> listeProduit;
 	private Client client;
+	private List<Client> listeClient;
 	
 
 	// Constructeur
@@ -93,20 +94,26 @@ public class AgentManageBean implements Serializable {
 		this.client = client;
 	}
 	
+	public List<Client> getListeClient() {
+		return listeClient;
+	}
+
+	public void setListeClient(List<Client> listeClient) {
+		this.listeClient = listeClient;
+	}
 	
 	
 
-	// Methodes se connecter
+	// Methodes se connecter	
 
-	
-
-	public String seConnecter() {
+		public String seConnecter() {
 
 		Agent aOut = agentService.isExist(this.agent);
-		//Client clOut= clientService.isExist(this.client);
 		
-		this.listeProduit=produitService.getAllProduit();   //, clOut
-		//this.listeCetegorie=categorieService.consulatationCategorieService(aOut, clOut);
+		
+		this.listeProduit=produitService.getAllProduit();   
+		this.listeCetegorie=categorieService.consultationCategorie();
+		this.listeClient=clientService.getAllListClientService();
 
 		if (aOut != null) {
 			
@@ -116,6 +123,7 @@ public class AgentManageBean implements Serializable {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("agentListe", aOut);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitsListe", this.listeProduit);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe", this.listeCetegorie);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clientliste", this.listeClient);
 			
 			return "success";
 

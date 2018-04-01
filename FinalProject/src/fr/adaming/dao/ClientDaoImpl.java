@@ -17,7 +17,7 @@ public class ClientDaoImpl implements IClientDao {
 	private EntityManager em;
 
 	@Override
-	public List<Client> getAllListClient(Client cl) {
+	public List<Client> getAllListClient() {
 
 		String req = "SELECT cl FROM Client";
 
@@ -38,7 +38,7 @@ public class ClientDaoImpl implements IClientDao {
 	public int update(Client cl) {
 
 		// Requete
-		String req = "UPDATE Clients cl SET cl.nom=:pNom, cl.adresse=:pAdresse, cl.email=:pEmail, cl.tel=:pTel, cl.mdp=:pMdp WHERE cl.id=:pId";
+		String req = "UPDATE Client cl SET cl.nomClient=:pNom, cl.adresse=:pAdresse, cl.email=:pEmail, cl.tel=:pTel, cl.mdp=:pMdp WHERE cl.idClient=:pId";
 		// Query
 		Query query = em.createQuery(req);
 		// Passage des parametres
@@ -58,7 +58,7 @@ public class ClientDaoImpl implements IClientDao {
 	public int delete(Client cl) {
 
 		// Requete
-		String req = "DELETE FROM Clients cl WHERE cl.id=:pId";
+		String req = "DELETE FROM Client cl WHERE cl.idClient=:pId";
 		// Query
 		Query query = em.createQuery(req);
 

@@ -1,4 +1,4 @@
-package fr.adaming.managedbean;
+package fr.adaming.managebean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,7 +15,7 @@ import fr.adaming.service.IClientService;
 
 @ManagedBean(name = "clMB")
 @RequestScoped
-public class ClientManageBean implements Serializable {
+public class ClientManagebean implements Serializable {
 
 	@EJB // Transformation UML en Java
 	IClientService clService;
@@ -26,7 +26,7 @@ public class ClientManageBean implements Serializable {
 	HttpSession maSession;
 
 	// Constructeurs
-	public ClientManageBean() {
+	public ClientManagebean() {
 		this.client = new Client();
 	}
 
@@ -48,7 +48,7 @@ public class ClientManageBean implements Serializable {
 		if (clAjout.getIdClient() != 0) {
 
 			// Recuperer la nouvelle liste
-			List<Client> liste = clService.getAllListClientService(this.client);
+			List<Client> liste = clService.getAllListClientService();
 			maSession.setAttribute("clientliste", liste);
 
 			return "accueil";
@@ -65,7 +65,7 @@ public class ClientManageBean implements Serializable {
 
 		if (verif != 0) {
 			// Recuperer la nouvelle liste
-			List<Client> liste = clService.getAllListClientService(this.client);
+			List<Client> liste = clService.getAllListClientService();
 
 			maSession.setAttribute("clientliste", liste);
 
@@ -82,7 +82,7 @@ public class ClientManageBean implements Serializable {
 
 		if (verif != 0) {
 			// Recuperer la nouvelle liste
-			List<Client> liste = clService.getAllListClientService(this.client);
+			List<Client> liste = clService.getAllListClientService();
 			maSession.setAttribute("clientliste", liste);
 
 			return "accueil";

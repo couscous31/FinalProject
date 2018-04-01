@@ -9,7 +9,7 @@ import fr.adaming.model.Client;
 @Local
 public interface IClientDao {
 	
-	public List<Client> getAllListClient(Client cl);
+	public List<Client> getAllListClient();
 	
 	public Client addClient(Client cl);
 	
