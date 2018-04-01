@@ -12,6 +12,8 @@ import fr.adaming.model.Produit;
 @Stateless
 
 public class ProduitDaoImpl implements IProduitDao {
+	
+	//Test
 
 	@PersistenceContext(unitName = "pu")
 	private EntityManager em;
