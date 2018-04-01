@@ -17,7 +17,7 @@
 		<class>fr.adaming.model.LigneCommande</class>
 		<class>fr.adaming.model.Produit</class>
 		
-		<!-- les proprietes de hibernate -->
+		<!-- les proprietes de Hibernate -->
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
