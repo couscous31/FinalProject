@@ -24,7 +24,7 @@ public class CommandeDaoImpl implements ICommandeDao {
 		Commande comdm=new Commande();
 		//Rentrer les information de la commande : la date et le panier
 		comdm.setDateCommande(new Date()); //Date du jour automatique grace au pakage util date de l'ordi
-		comdm.setListelc(pa.GetAllPanier());;
+//		comdm.setListelc(pa.GetAllPanier());
 		
 		
 		

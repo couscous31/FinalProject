@@ -1,4 +1,4 @@
-16 lines (9 sloc)  265 Bytes
+
 package fr.adaming.dao;
 
 import javax.ejb.Local;
