@@ -12,15 +12,15 @@ import fr.adaming.model.Produit;
 
 @Stateful
 
-public class ProduitServiceImpl implements IProduitService{
-	
-	//transfo assos Uml en Java
+public class ProduitServiceImpl implements IProduitService {
+
+	// transfo assos Uml en Java
 	@EJB
 	private IProduitDao produitDao;
 
 	@Override
-	public List<Produit> getAllProduit() {  
-		return produitDao.getAllProduit();    
+	public List<Produit> getAllProduit() {
+		return produitDao.getAllProduit();
 	}
 
 	@Override
@@ -42,7 +42,5 @@ public class ProduitServiceImpl implements IProduitService{
 	public Produit getProduitById(Produit pr) {
 		return produitDao.getProduitById(pr);
 	}
-	
-	
 
 }

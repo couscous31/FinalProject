@@ -9,16 +9,15 @@ import fr.adaming.model.Produit;
 @Local
 
 public interface IProduitService {
-	
-	public List<Produit> getAllProduit(); 
-	
-	public Produit addProduit(Produit pr);
-	
-	public int deleteProduit(Produit pr);
-	
-	public int updateProduit(Produit pr);
-	
-	public Produit getProduitById(Produit pr);
 
+	public List<Produit> getAllProduit();
+
+	public Produit addProduit(Produit pr);
+
+	public int deleteProduit(Produit pr);
+
+	public int updateProduit(Produit pr);
+
+	public Produit getProduitById(Produit pr);
 
 }
