@@ -1,9 +1,6 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,92 +11,88 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 @Entity
-@Table(name = "commandes")
-public class Commande implements Serializable {
-
-	// Declaration des attributs
+@Table(name="ligneCommandes")
+public class LigneCommande implements Serializable {
+	
+	
+	//attribut
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_com")
-	private long idCommande;
-	@Temporal(TemporalType.DATE)
-	private Date dateCommande;
-
-	// association uml java avec client:
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_lc")
+	private int id;
+	private int quantite;
+	private double  prix ;
+	
+	
+	//association uml java avec produit :
 	@ManyToOne
-	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
-	private Client client;
-
-	// association uml java avec ligne commande
-	@OneToMany(mappedBy = "commande")
-	private List<LigneCommande> listelc;
+    @JoinColumn(name="p_id", referencedColumnName="id_p")
+	private Produit produit;
 	
-	//association uml java avec agent
+	//association uml java avec la commande :
 	@ManyToOne
-	@JoinColumn(name="a_id", referencedColumnName="id_a")
-	private Agent agent;
-
-	// Constructeurs
-	public Commande() {
-		super();
-	}
-
-	public Commande(Date dateCommande) {
-		super();
-		this.dateCommande = dateCommande;
-	}
-
-	public Commande(long idCommande, Date dateCommande) {
-		super();
-		this.idCommande = idCommande;
-		this.dateCommande = dateCommande;
-	}
-
-	// G+S
-	public long getIdCommande() {
-		return idCommande;
-	}
-
-	public void setIdCommande(long idCommande) {
-		this.idCommande = idCommande;
-	}
-
-	public Date getDateCommande() {
-		return dateCommande;
-	}
-
-	public void setDateCommande(Date dateCommande) {
-		this.dateCommande = dateCommande;
-	}
-
+	@JoinColumn(name="com_id",referencedColumnName="id_com")
+	private Commande commande;
 	
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public List<LigneCommande> getListelc() {
-		return listelc;
-	}
-
-	public void setListelc(List<LigneCommande> listelc) {
-		this.listelc = listelc;
-	}
-
-	public Agent getAgent() {
-		return agent;
-	}
-
-	public void setAgent(Agent agent) {
-		this.agent = agent;
-	}
-
 	
+	
+	
+	//constructeur
+	public LigneCommande() {
+		super();
+	}
+	public LigneCommande(int quantite, int prix) {
+		super();
+		this.quantite = quantite;
+		this.prix = prix;
+	}
+	public LigneCommande(int id, int quantite, int prix) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.prix = prix;
+	}
+	
+	
+	//get et set
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getQuantite() {
+		return quantite;
+	}
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	
+	public double getPrix() {
+		return prix;
+	}
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+	public Produit getProduit() {
+		return produit;
+	}
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+	public Commande getCommande() {
+		return commande;
+	}
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+	
+	
+	
+	
+	
+
 }
