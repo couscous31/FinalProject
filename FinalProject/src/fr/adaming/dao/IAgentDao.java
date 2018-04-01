@@ -7,6 +7,7 @@ import fr.adaming.model.Agent;
 @Local
 public interface IAgentDao {
 	
+	//methode
  public Agent isExist(Agent a);
 
 }

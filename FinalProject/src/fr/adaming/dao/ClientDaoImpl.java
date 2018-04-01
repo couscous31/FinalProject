@@ -41,6 +41,7 @@ public class ClientDaoImpl implements IClientDao {
 		String req = "UPDATE Client cl SET cl.nomClient=:pNom, cl.adresse=:pAdresse, cl.email=:pEmail, cl.tel=:pTel, cl.mdp=:pMdp WHERE cl.idClient=:pId";
 		// Query
 		Query query = em.createQuery(req);
+		
 		// Passage des parametres
 		query.setParameter("pNom", cl.getNomClient());
 		query.setParameter("pAdresse", cl.getAdresse());

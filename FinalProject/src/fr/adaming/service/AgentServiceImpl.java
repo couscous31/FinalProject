@@ -9,7 +9,7 @@ import fr.adaming.model.Agent;
 @Stateful
 public class AgentServiceImpl implements IAgentService {
 	
-	@EJB //Annotation pour injection de dependance
+	@EJB //Annotation pour l'injection de dependance
 	private IAgentDao agentDao;
 
 	@Override

@@ -41,7 +41,7 @@ public class AgentManageBean implements Serializable {
 	private List<Client> listeClient;
 	
 
-	// Constructeur
+	// Constructeurs
 	public AgentManageBean() {
 		this.agent = new Agent() ;
 		this.client=new Client();

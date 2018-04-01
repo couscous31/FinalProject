@@ -25,7 +25,7 @@ public class ClientManagebean implements Serializable {
 
 	HttpSession maSession;
 
-	// Constructeurs
+	// Constructeur
 	public ClientManagebean() {
 		this.client = new Client();
 	}
