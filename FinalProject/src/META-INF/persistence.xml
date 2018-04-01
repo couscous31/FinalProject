@@ -6,7 +6,7 @@
 
 	<persistence-unit name="pu" transaction-type="JTA">
 
-		<!-- specifier le nom de la datasource -->
+		<!-- specifier le nom de la Datasource -->
 		<jta-data-source>java:/eCommerce</jta-data-source>
 
 		<!-- liste des classes pesistantes -->
