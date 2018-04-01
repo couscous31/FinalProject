@@ -1,5 +1,87 @@
 package fr.adaming.dao;
 
-public class CategorieDaoImpl {
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import fr.adaming.model.Categorie;
+
+@Stateless
+
+public class CategorieDaoImpl implements ICategorieDao {
+
+	@PersistenceContext(unitName = "pu")
+	private EntityManager em;
+
+	@Override
+	public List<Categorie> consultationCategorie() {
+		// creation de la requete SQl
+		String req1 = "SELECT cat FROM Categorie AS cat ";
+
+		// création d'un query
+		Query query1 = em.createQuery(req1);
+
+		// envoyer la requete et recuperer le resultat
+		return query1.getResultList();
+	}
+
+	@Override
+	public Categorie ajouterCategorie(Categorie cat) {
+		// ajouter dans la table :
+		em.persist(cat);
+		return cat;
+	}
+
+	@Override
+	public int modifierCategorie(Categorie cat) {
+		// creation de la requete :
+		String req2 = "UPDATE Categorie cat SET cat.nomCategorie=:pNom, " + "cat.photoCat=:pPhoto , "
+				+ "cat.description=pDescription " + "WHERE cat.idCategorie=:pIdCat";
+
+		// creation d'un query :
+		Query query2 = em.createQuery(req2);
+
+		// passages des parametres :
+		query2.setParameter("pNom", cat.getNomCategorie());
+		query2.setParameter("pPhoto", cat.getPhotoCat());
+		query2.setParameter("pDescription", cat.getDescription());
+		query2.setParameter("pIdCat", cat.getIdCategorie());
+
+		// envoyer la requete et récupérer le résultat
+		return (int) query2.executeUpdate();
+	}
+
+	@Override
+	public int supprimerCategorie(Categorie cat) {
+		// creation de la requete :
+		String req3 = "DELETE FROM Categorie WHERE cat.idCategorie=:pIdCat";
+
+		// creation du query :
+		Query query3 = em.createQuery(req3);
+
+		// passage des parametres :
+		query3.setParameter("pIdCat", cat.getIdCategorie());
+
+		// envoyer la requete et recuperer le resultat :
+		return (int) query3.executeUpdate();
+	}
+
+	@Override
+	public Categorie getCategorieById(Categorie cat) {
+
+		// appel de la requete :
+		String req4 = "SELECT cat FROM Categorie WHERE cat.idCategorie=:pId";
+
+		// creation du query :
+		Query query4 = em.createQuery(req4);
+
+		// passages des parametres :
+		query4.setParameter("pIdCat", cat.getIdCategorie());
+
+		return (Categorie) query4.getSingleResult();
+	}
 
 }
