@@ -85,13 +85,7 @@ public class Commande implements Serializable {
 		this.client = client;
 	}
 
-	public List<LigneCommande> getListelc() {
-		return listelc;
-	}
 
-	public void setListelc(List<LigneCommande> listelc) {
-		this.listelc = listelc;
-	}
 
 	public Agent getAgent() {
 		return agent;
@@ -99,6 +93,14 @@ public class Commande implements Serializable {
 
 	public void setAgent(Agent agent) {
 		this.agent = agent;
+	}
+
+	public List<LigneCommande> getListelc() {
+		return listelc;
+	}
+
+	public void setListelc(List<LigneCommande> listelc) {
+		this.listelc = listelc;
 	}
 
 	

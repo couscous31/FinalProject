@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import fr.adaming.model.LigneCommande;
 
 @Stateless
-public class LignedeCommandeDaoImpl implements ILignedeCommandeDao {
+public class LignedeCommandeDaoImpl implements ILigneCommandeDao {
 
 	@PersistenceContext(unitName = "pu")
 	private EntityManager em;
@@ -24,5 +24,8 @@ public class LignedeCommandeDaoImpl implements ILignedeCommandeDao {
 
 		return (List<LigneCommande>) query.getResultList();
 	}
+
+
+	
 
 }
