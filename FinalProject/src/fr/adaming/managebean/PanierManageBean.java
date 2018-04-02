@@ -17,6 +17,7 @@ import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
 import fr.adaming.service.ICommandeService;
+import fr.adaming.service.ILigneCommandeService;
 
 @ManagedBean(name = "paMB")
 @RequestScoped
@@ -24,13 +25,16 @@ public class PanierManageBean implements Serializable {
 
 	@EJB
 	ICommandeService commandeService;
+	
+	@EJB
+	ILigneCommandeService lignecommandeService;
 
 	Panier panier;
 
 	// //Attribut du ManageBean
 	private Client client;
 	private Commande commande;
-	private LigneCommande ligneco;
+	private List<LigneCommande> listeco;
 	private List<Produit> listepro;
 	private Produit produit;
 	private int quantite = 0;
@@ -91,6 +95,8 @@ public class PanierManageBean implements Serializable {
 
 			panier.AjouterProduit(this.produit, quantite);
 			String msg3 = "Le produit a bien ete ajouté";
+			this.listeco=lignecommandeService.getAllListLcService();
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listelc", this.listeco);
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg3, null));
 			this.produit = null;
 			this.quantite = 0;
