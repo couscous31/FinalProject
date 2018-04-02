@@ -12,6 +12,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.model.UploadedFile;
+import org.primefaces.model.UploadedFileWrapper;
 
 import fr.adaming.model.Agent;
 import fr.adaming.model.Client;
@@ -31,15 +33,17 @@ public class ProduitManageBean implements Serializable {
 	private Produit produit;
 	private Agent agent;
 	private Client client;
-
 	private boolean indice;
 
 	HttpSession maSession;
+	
+	private UploadedFile uf;
 
 	// Constructeur vide
 	public ProduitManageBean() {
 		this.produit = new Produit();
 		this.indice = false;
+		this.uf=new UploadedFileWrapper();
 	}
 
 	// Méthodes Session
@@ -86,10 +90,20 @@ public class ProduitManageBean implements Serializable {
 		this.indice = indice;
 	}
 
+	public UploadedFile getUf() {
+		return uf;
+	}
+
+	public void setUf(UploadedFile uf) {
+		this.uf = uf;
+	}
+
 	// Méthodes
+
 
 	// ajouter un produit à la liste
 	public String ajouterProduit() {
+		this.produit.setPhotoProd(this.uf.getContents());
 
 		// appel de la méthode
 		Produit prAjout = produitService.addProduit(produit);
@@ -97,7 +111,7 @@ public class ProduitManageBean implements Serializable {
 		if (prAjout.getId() != 0) {
 			// récup et mettre à jour la liste
 			List<Produit> liste = produitService.getAllProduit();
-			maSession.setAttribute("produitsListe", liste);
+			maSession.setAttribute("produitListe", liste);
 
 			return "accueilAgent";
 		} else {
@@ -113,7 +127,7 @@ public class ProduitManageBean implements Serializable {
 
 		// récup et mettre à jour la liste :
 		List<Produit> liste = produitService.getAllProduit();
-		maSession.setAttribute("produitsListe", liste);
+		maSession.setAttribute("produitListe", liste);
 
 	}
 
@@ -124,7 +138,7 @@ public class ProduitManageBean implements Serializable {
 		if (prSuppr != 0) {
 			// recuperation de la liste
 			List<Produit> liste = produitService.getAllProduit();
-			maSession.setAttribute("produitsListe", liste);
+			maSession.setAttribute("produitListe", liste);
 
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression produit : fail !!!"));

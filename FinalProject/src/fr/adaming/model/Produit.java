@@ -15,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "produits")
@@ -34,6 +35,8 @@ public class Produit implements Serializable {
 	private boolean selectionne;
 	@Lob
 	private byte[] photoProd;
+	@Transient
+	private String image;
 
 	// Transfo de l'assos Uml en Java avec Categorie
 	@ManyToOne
@@ -157,5 +160,14 @@ public class Produit implements Serializable {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 
 }

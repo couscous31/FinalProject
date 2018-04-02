@@ -7,30 +7,32 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.codec.binary.Base64;
+
 import fr.adaming.model.Produit;
 
 @Stateless
 
 public class ProduitDaoImpl implements IProduitDao {
 	
-	//Test
-
 	@PersistenceContext(unitName = "pu")
 	private EntityManager em;
 
 	// Get All Produit
-	@Override
-	public List<Produit> getAllProduit() {
+		@Override
+		public List<Produit> getAllProduit() {
+			// creation de la requete SQl
+			String req = "SELECT pr FROM Produit AS pr ";
 
-		// req jpql
-		String req = "SELECT pr FROM Produit AS pr ";
-
-		// création de query
-		Query query = em.createQuery(req);
-
-		// envoyer la req et récup résultat
-		return query.getResultList();
-	}
+			// création d'un query
+			Query query = em.createQuery(req);
+			List<Produit> listePr= query.getResultList();
+			
+			for(Produit pr : listePr){
+				pr.setImage("data:image/png;base64,"+Base64.encodeBase64String(pr.getPhotoProd()));
+			}
+			return listePr;
+		}
 
 	// Add Produit
 	@Override
@@ -44,13 +46,13 @@ public class ProduitDaoImpl implements IProduitDao {
 	public int deleteProduit(Produit pr) {
 
 		// req jpql
-		String req1 = "DELETE FROM produits AS pr WHERE pr.id=:pIdPr";
+		String req1 = "DELETE FROM Produit AS pr WHERE pr.id=:pId";
 
 		// création de query
 		Query query1 = em.createQuery(req1);
 
 		// passage des params
-		query1.setParameter("pIdPr", pr.getId());
+		query1.setParameter("pId", pr.getId());
 
 		// envoyer la req et récup résultat
 		return (int) query1.executeUpdate();
@@ -61,8 +63,12 @@ public class ProduitDaoImpl implements IProduitDao {
 	public int updateProduit(Produit pr) {
 
 		// req jpql
-		String req2 = "UPDATE Produit SET pr.designation=:pDesi," + "pr.description=:pDesc," + "pr.prix=:pPrix,"
-				+ "pr.quantite=:pQt," + "pr.photoProd=:pPhoto" + " WHERE pr.id=:pIdPr";
+		String req2 = "UPDATE Produit SET pr.designation=:pDesi," 
+										+ "pr.description=:pDesc," 
+										+ "pr.prix=:pPrix,"
+										+ "pr.quantite=:pQt," 
+										+ "pr.photoProd=:pPhoto" 
+										+ " WHERE pr.id=:pIdPr";
 
 		// création du query
 		Query query2 = em.createQuery(req2);
