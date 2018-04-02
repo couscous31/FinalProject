@@ -16,16 +16,39 @@
 	<ui:composition template="/template/layoutAgent.xhtml">
 		<ui:define name="corps">
 
-			<h2>Formulaire d'ajout</h2>
-
 			<h:form enctype="multipart/form-data">
-				<h:panelGrid columns="2">
-					Nom : <h:inputText value="#{catMB.categorie.nomCategorie}" />
-					Description : <h:inputText value="#{catMB.categorie.description}" />
-					Photo : <p:fileUpload value="#{catMB.uf}" mode="simple" />
-					<h:commandButton value="Ajouter" ajax="false"
-						action="#{catMB.ajouterCategorie}" />
-				</h:panelGrid>
+
+				<p:panel id="panel" header="Formulaire d'ajout"
+					style="margin-bottom:10px;">
+					<p:messages id="messages" />
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<p:outputLabel for="text1" value="Nom:" />
+						<p:inputText id="text1" value="#{catMB.categorie.nomCategorie}"
+							required="true" label="Nom">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="text1" />
+
+						<p:outputLabel for="text2" value="Description:" />
+						<p:inputText id="text2" value="#{catMB.categorie.description}"
+							required="true" label="Description" />
+						<p:message for="text2" />
+
+						<p:outputLabel for="text3" value="Photo:" />
+						<p:fileUpload id="text3" value="#{catMB.uf}" mode="simple"
+							required="true" label="Photo" />
+						<p:message for="text3" />
+
+					</h:panelGrid>
+				</p:panel>
+
+				<p:toolbar>
+					<f:facet name="left">
+						<p:commandButton value="Ajouter" update="panel" ajax="false"
+							action="#{catMB.ajouterCategorie}" style="margin-right:20px;" />
+					</f:facet>
+				</p:toolbar>
 			</h:form>
 
 
