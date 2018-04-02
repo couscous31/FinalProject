@@ -18,14 +18,15 @@
 
 			<h2>Formulaire d'ajout</h2>
 
-			<h:form>
+			<h:form enctype="multipart/form-data">
 				<h:panelGrid columns="2">
 					Désignation : <h:inputText value="#{prMB.produit.designation}" />
 					Description : <h:inputText value="#{prMB.produit.description}" />
 					Prix : <h:inputText value="#{prMB.produit.prix}" />
 					Quantité : <h:inputText value="#{prMB.produit.quantite}" />
-					Photo : <p:graphicImage value="#{prMB.produit.photoProd}" />
-					<h:commandButton value="Ajouter" action="#{prMB.ajouterProduit}" />
+					Photo : <p:fileUpload value="#{prMB.uf}" mode="simple" />
+					<h:commandButton value="Ajouter" ajax="false"
+						action="#{prMB.ajouterProduit}" />
 				</h:panelGrid>
 			</h:form>
 
