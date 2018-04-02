@@ -13,19 +13,21 @@
 <h:body>
 
 
-<ui:composition template="/template/layoutAgent.xhtml">
+	<ui:composition template="/template/layoutAgent.xhtml">
 		<ui:define name="corps">
 
 			<h2>Formulaire d'ajout</h2>
 
-			<h:form>
+			<h:form enctype="multipart/form-data">
 				<h:panelGrid columns="2">
 					Nom : <h:inputText value="#{catMB.categorie.nomCategorie}" />
 					Description : <h:inputText value="#{catMB.categorie.description}" />
-					Photo : <p:graphicImage value="#{catMB.categorie.photoCat}" />
-					<h:commandButton value="Ajouter" action="#{catMB.ajouterCategorie}" />
+					Photo : <p:fileUpload value="#{catMB.uf}" mode="simple" />
+					<h:commandButton value="Ajouter" ajax="false"
+						action="#{catMB.ajouterCategorie}" />
 				</h:panelGrid>
 			</h:form>
+
 
 		</ui:define>
 

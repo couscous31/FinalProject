@@ -12,49 +12,47 @@
 
 <h:body>
 
-<ui:composition template="/template/layoutAgent.xhtml">
+	<ui:composition template="/template/layoutAgent.xhtml">
 
-<ui:define name="corps">
+		<ui:define name="corps">
 
-<h:form>
-		<h:panelGrid columns="2">
+			<h:form>
+				<h:panelGrid columns="2">
 				ID : <h:inputText value="#{catMB.categorie.idCategorie}" />
-			<p:commandButton value="Rechercher" action="#{catMB.rechercherCategorieById}"
-				update="@all" />
-		</h:panelGrid>
-	</h:form>
+					<p:commandButton value="Rechercher"
+						action="#{catMB.rechercherCategorieById}" update="@all" />
+				</h:panelGrid>
+			</h:form>
 
-	<h:form>
+			<h:form>
 
-		<p:dataTable var="cat" value="#{catMB.categorie}"
-			style="text-align: center" rendered="#{catMB.indice}">
-			<f:facet name="header">Liste des catégories</f:facet>
+				<p:dataTable var="cat" value="#{sessionScope.categorieListe}"
+					reflow="true" rows="5" paginator="true">
+					<f:facet name="header">Catégorie</f:facet>
 
-			<p:column headerText="Id" style="text-align: center">
-				<h:outputText value="#{cat.idCategorie}" />
-			</p:column>
+					<p:column headerText="Id">
+						<h:outputText value="#{cat.id}" />
+					</p:column>
 
-			<p:column headerText="Nom" style="text-align: center">
-				<h:outputText value="#{cat.nomCategorie}" />
-			</p:column>
+					<p:column headerText="Nom">
+						<h:outputText value="#{cat.nomCategorie}" />
+					</p:column>
 
-			<p:column headerText="Description" style="text-align: center">
-				<h:outputText value="#{cat.description}" />
-			</p:column>
+					<p:column headerText="Description">
+						<h:outputText value="#{cat.description}" />
+					</p:column>
 
-			<p:column headerText="Photo" style="text-align: center">
-				<h:outputText value="#{cat.photoCat}" />
-			</p:column>
-
-		</p:dataTable>
-
-	</h:form>
+					<p:column headerText="Photo">
+						<h:graphicImage value="#{cat.image}" />
+					</p:column>
 
 
-	<h:messages style="color: red" />
+				</p:dataTable>
+
+			</h:form>
 
 
-
+			<h:messages style="color: red" />
 
 
 
@@ -63,11 +61,14 @@
 
 
 
-</ui:define>
 
 
 
-</ui:composition>
+		</ui:define>
+
+
+
+	</ui:composition>
 
 
 

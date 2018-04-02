@@ -104,11 +104,11 @@ public class CategorieManageBean implements Serializable {
 				List<Categorie> liste = categorieService.consultationCategorie();
 				catSession.setAttribute("categorieListe", liste);
 
-				return "accueil";
+				return "accueilAgent";
 
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ajout categorie : fail !!!"));
-				return "ajout";
+				return "ajouterCategorie";
 			}
 
 		}

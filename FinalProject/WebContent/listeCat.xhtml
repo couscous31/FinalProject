@@ -22,16 +22,16 @@
 					editable="true" style="text-align: center">
 					<f:facet name="header">Liste des catégories </f:facet>
 
-					<p:ajax event="rowEdit" listener="#{catMB.edittable}"/>
+					<p:ajax event="rowEdit" listener="#{catMB.edittable}" />
 					<p:ajax event="rowEditCancel" listener="#{catMB.edittable}" />
 
 					<p:column headerText="Id">
 						<p:cellEditor>
 							<f:facet name="output">
-								<h:outputText value="#{cat.idCategorie}" />
+								<h:outputText value="#{cat.id}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText id="modelInput" value="#{cat.idCategorie}"
+								<p:inputText id="modelInput" value="#{cat.id}"
 									style="width:100%" rendered="false" />
 							</f:facet>
 						</p:cellEditor>
@@ -64,10 +64,10 @@
 					<p:column headerText="Photo">
 						<p:cellEditor>
 							<f:facet name="output">
-								<p:graphicImage value="#{cat.photoCat}" />
+								<h:graphicImage value="#{cat.image}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText value="#{cat.photoCat}" style="width:100%"
+								<p:inputText value="#{cat.image}" style="width:100%"
 									label="Photo" />
 							</f:facet>
 						</p:cellEditor>
@@ -76,8 +76,8 @@
 					<p:column headerText="Opération">
 						<h:commandLink value="Supprimer"
 							action="#{catMB.supprimerCategorie}" update="@all">
-							<f:setPropertyActionListener value="#{cat.idCategorie}"
-								target="#{catMB.categorie.idCategorie}" />
+							<f:setPropertyActionListener value="#{cat.id}"
+								target="#{catMB.categorie.id}" />
 						</h:commandLink>
 					</p:column>
 
