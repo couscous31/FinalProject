@@ -36,7 +36,7 @@ public class Commande implements Serializable {
 
 	// association uml java avec ligne commande
 	@OneToMany(mappedBy = "commande")
-	private List<LigneCommande> listelc;
+	private Collection<LigneCommande> listelc;
 	
 	//association uml java avec agent
 	@ManyToOne
@@ -95,13 +95,15 @@ public class Commande implements Serializable {
 		this.agent = agent;
 	}
 
-	public List<LigneCommande> getListelc() {
+	public Collection<LigneCommande> getListelc() {
 		return listelc;
 	}
 
-	public void setListelc(List<LigneCommande> listelc) {
+	public void setListelc(Collection<LigneCommande> listelc) {
 		this.listelc = listelc;
 	}
+
+	
 
 	
 }
