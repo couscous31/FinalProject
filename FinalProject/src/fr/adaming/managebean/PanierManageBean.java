@@ -10,7 +10,7 @@ import javax.faces.bean.RequestScoped;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-
+import fr.adaming.service.EnvoyerMail;
 import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
