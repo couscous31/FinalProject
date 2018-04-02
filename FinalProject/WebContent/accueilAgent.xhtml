@@ -17,64 +17,63 @@
 		<ui:define name="corps">
 
 			<h:form>
+				<p:carousel value="#{sessionScope.categorieListe}"
+					headerText="Catégories" var="cat" itemStyle="text-align:center"
+					responsive="true">
 
-				<p:dataTable var="cat" value="#{sessionScope.categorieListe}"
-					reflow="true" rows="5" paginator="true">
-					<f:facet name="header">Liste des catégories </f:facet>
+					<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+						columnClasses="label,value" layout="grid"
+						styleClass="ui-panelgrid-blank">
 
-					<p:column headerText="Id">
+						<f:facet name="header">
+							<h:graphicImage value="#{cat.image}" />
+						</f:facet>
+
+						<h:outputText value="Id:" />
 						<h:outputText value="#{cat.id}" />
-					</p:column>
 
-					<p:column headerText="Nom">
+						<h:outputText value="Nom:" />
 						<h:outputText value="#{cat.nomCategorie}" />
-					</p:column>
 
-					<p:column headerText="Description">
+						<h:outputText value="Description:" />
 						<h:outputText value="#{cat.description}" />
-					</p:column>
 
-					<p:column headerText="Photo">
-						<h:graphicImage value="#{cat.image}" />
-					</p:column>
+					</p:panelGrid>
 
-
-				</p:dataTable>
-
+				</p:carousel>
 			</h:form>
 
 			<h:form>
+				<p:carousel value="#{sessionScope.produitListe}"
+					headerText="Produits" var="pr" itemStyle="text-align:center"
+					responsive="true">
 
-				<p:dataTable var="pr" value="#{sessionScope.produitListe}"
-					reflow="true" rows="5" paginator="true">
-					<f:facet name="header">Liste des produits</f:facet>
+					<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+						columnClasses="label,value" layout="grid"
+						styleClass="ui-panelgrid-blank">
 
-					<p:column headerText="Id">
+						<f:facet name="header">
+							<h:graphicImage value="#{pr.image}" />
+						</f:facet>
+
+						<h:outputText value="Id:" />
 						<h:outputText value="#{pr.id}" />
-					</p:column>
 
-					<p:column headerText="Désignation">
+						<h:outputText value="Désignation:" />
 						<h:outputText value="#{pr.designation}" />
-					</p:column>
 
-					<p:column headerText="Description">
+						<h:outputText value="Description:" />
 						<h:outputText value="#{pr.description}" />
-					</p:column>
 
-					<p:column headerText="Prix">
+						<h:outputText value="Prix:" />
 						<h:outputText value="#{pr.prix}" />
-					</p:column>
 
-					<p:column headerText="Quantité">
+						<h:outputText value="Quantité:" />
 						<h:outputText value="#{pr.quantite}" />
-					</p:column>
 
-					<p:column headerText="Photo">
-						<h:graphicImage value="#{pr.image}" />
-					</p:column>
+					</p:panelGrid>
 
-				</p:dataTable>
-
+				</p:carousel>
 			</h:form>
 
 
