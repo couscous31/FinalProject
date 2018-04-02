@@ -13,7 +13,7 @@ import fr.adaming.model.Panier;
 public class CommandeService implements ICommandeService {
 
 	@EJB
-	ICommandeDao commandeService;
+	ICommandeDao commandeService; //test
 	
 	@Override
 	public Commande recordCommande(Panier pa, Client cl) {

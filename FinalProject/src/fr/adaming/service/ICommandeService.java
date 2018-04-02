@@ -11,4 +11,5 @@ public interface ICommandeService {
 	
 	public Commande recordCommande(Panier pa, Client cl);
 
+	//Test
 }

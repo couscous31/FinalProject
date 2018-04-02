@@ -16,7 +16,7 @@ public class Panier implements Serializable {
 
 	// Transfo assos Uml et Java avec ligne de commande
 //	@EJB
-//	ILigneCommandeService lignecommandeService;
+//	ILigneCommandeService lignecommandeService;:::
 
 	private Map<Long, LigneCommande> listlc = new HashMap<Long, LigneCommande>();
 	
