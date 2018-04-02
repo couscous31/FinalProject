@@ -102,4 +102,34 @@ public class ProduitDaoImpl implements IProduitDao {
 		return (Produit) query3.getSingleResult();
 	}
 
+	@Override
+	public List<Produit> produitParMotCle(String mc) {
+		// req jpql :
+		String req4="SELECT pr from Produit as pr WHERE pr.designation like :MC";
+		
+		//creation du query :
+		Query query4=em.createQuery(req4);
+		
+		//passage du paramètre:
+		query4.setParameter("MC", "%"+mc+"%");
+		
+		//retour du résultat
+		return query4.getResultList();
+	}
+
+	@Override
+	public List<Produit> produitParCategorie(Produit pr) {
+		//req  jpql :
+		String req5="Select pr from Produit as pr where pr.categorie.id=:pIdCat";
+		
+		//création du query :
+		Query query5=em.createQuery(req5);
+		
+		//passage des parametres:
+		query5.setParameter("pIdCat", pr.getCategorie().getId() );
+		
+		//retour du resultat
+		return query5.getResultList();
+	}
+
 }

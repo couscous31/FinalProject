@@ -19,5 +19,9 @@ public interface IProduitService {
 	public int updateProduit(Produit pr);
 
 	public Produit getProduitById(Produit pr);
+	
+   public List<Produit> produitParMotCle(String mc);
+	
+	public List<Produit> produitParCategorie(Produit pr);
 
 }

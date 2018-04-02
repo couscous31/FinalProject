@@ -43,4 +43,15 @@ public class ProduitServiceImpl implements IProduitService {
 		return produitDao.getProduitById(pr);
 	}
 
+	@Override
+	public List<Produit> produitParMotCle(String mc) {
+		return produitDao.produitParMotCle(mc);
+	}
+
+	@Override
+	public List<Produit> produitParCategorie(Produit pr) {
+		// TODO Auto-generated method stub
+		return produitDao.produitParCategorie(pr);
+	}
+
 }
