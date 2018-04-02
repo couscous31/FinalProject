@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.codec.binary.Base64;
+
 import fr.adaming.model.Categorie;
 
 @Stateless
@@ -23,9 +25,12 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 		// création d'un query
 		Query query1 = em.createQuery(req1);
-
-		// envoyer la requete et recuperer le resultat
-		return query1.getResultList();
+		List<Categorie> listeCat= query1.getResultList();
+		
+		for(Categorie cat : listeCat){
+			cat.setImage("data:image/png;base64,"+Base64.encodeBase64String(cat.getPhotoCat()));
+		}
+		return listeCat;
 	}
 
 	@Override
@@ -38,8 +43,10 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public int modifierCategorie(Categorie cat) {
 		// creation de la requete :
-		String req2 = "UPDATE Categorie cat SET cat.nomCategorie=:pNom, " + "cat.photoCat=:pPhoto , "
-				+ "cat.description=pDescription " + "WHERE cat.idCategorie=:pIdCat";
+		String req2 = "UPDATE Categorie AS cat SET cat.nomCategorie=:pNom, " 
+												+ "cat.photoCat=:pPhoto , "
+												+ "cat.description=:pDescription " 
+												+ "WHERE cat.idCategorie=:pIdCat";
 
 		// creation d'un query :
 		Query query2 = em.createQuery(req2);
@@ -48,7 +55,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		query2.setParameter("pNom", cat.getNomCategorie());
 		query2.setParameter("pPhoto", cat.getPhotoCat());
 		query2.setParameter("pDescription", cat.getDescription());
-		query2.setParameter("pIdCat", cat.getIdCategorie());
+		query2.setParameter("pIdCat", cat.getId());
 
 		// envoyer la requete et récupérer le résultat
 		return (int) query2.executeUpdate();
@@ -57,13 +64,13 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public int supprimerCategorie(Categorie cat) {
 		// creation de la requete :
-		String req3 = "DELETE FROM Categorie WHERE cat.idCategorie=:pIdCat";
+		String req3 = "DELETE FROM Categorie AS cat WHERE cat.idCategorie=:pIdCat";
 
 		// creation du query :
 		Query query3 = em.createQuery(req3);
 
 		// passage des parametres :
-		query3.setParameter("pIdCat", cat.getIdCategorie());
+		query3.setParameter("pIdCat", cat.getId());
 
 		// envoyer la requete et recuperer le resultat :
 		return (int) query3.executeUpdate();
@@ -79,7 +86,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		Query query4 = em.createQuery(req4);
 
 		// passages des parametres :
-		query4.setParameter("pIdCat", cat.getIdCategorie());
+		query4.setParameter("pIdCat", cat.getId());
 
 		return (Categorie) query4.getSingleResult();
 	}

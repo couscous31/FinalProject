@@ -13,6 +13,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.model.UploadedFile;
+import org.primefaces.model.UploadedFileWrapper;
 
 import fr.adaming.model.Agent;
 import fr.adaming.model.Categorie;
@@ -34,11 +36,14 @@ public class CategorieManageBean implements Serializable {
 	private boolean indice;
 
 	HttpSession catSession;
+	
+	private UploadedFile uf;
 
 	// Constructeur vide
 	public CategorieManageBean() {
 		this.categorie = new Categorie();
 		this.indice = false;
+		this.uf=new UploadedFileWrapper();
 	}
 
 	@PostConstruct
@@ -76,27 +81,39 @@ public class CategorieManageBean implements Serializable {
 		this.indice = indice;
 	}
 
-	// Méthodes métier
-
-	// ajouter une categorie :
-	public String ajouterCategorie() {
-		// appel de la methode
-		Categorie catOut = categorieService.ajouterCategorie(categorie);
-
-		if (catOut.getIdCategorie() != 0) {
-			// récup et mettre à jour la liste
-			List<Categorie> liste = categorieService.consultationCategorie();
-			catSession.setAttribute("categorieListe", liste);
-
-			return "accueilAgent";
-
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ajout categorie : fail !!!"));
-			return "ajouterCategorie";
-		}
-
+	public UploadedFile getUf() {
+		return uf;
 	}
 
+	public void setUf(UploadedFile uf) {
+		this.uf = uf;
+	}
+
+	// Méthodes métier
+
+
+	// ajouter une categorie :
+		public String ajouterCategorie() {
+			this.categorie.setPhotoCat(this.uf.getContents());
+			
+			// appel de la methode
+			Categorie catOut = categorieService.ajouterCategorie(categorie);
+			
+			if (catOut.getId() != 0) {
+				// récup et mettre à jour la liste
+				List<Categorie> liste = categorieService.consultationCategorie();
+				catSession.setAttribute("categorieListe", liste);
+
+				return "accueil";
+
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ajout categorie : fail !!!"));
+				return "ajout";
+			}
+
+		}
+		
+		
 	// modifier categorie :
 	public void edittable(RowEditEvent event) {
 		// appel de la méthode
