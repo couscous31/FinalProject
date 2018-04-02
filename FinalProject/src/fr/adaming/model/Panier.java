@@ -18,6 +18,7 @@ public class Panier implements Serializable {
 //	@EJB
 //	ILigneCommandeService lignecommandeService;:::
 
+
 	private Map<Long, LigneCommande> listlc = new HashMap<Long, LigneCommande>();
 	
 	
