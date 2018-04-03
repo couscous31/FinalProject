@@ -34,16 +34,17 @@ public class ProduitManageBean implements Serializable {
 	private Agent agent;
 	private Client client;
 	private boolean indice;
-
-	HttpSession maSession;
-	
 	private UploadedFile uf;
+	HttpSession maSession;
+
+	private List<Produit> produits;
+	private List<Produit> filtreProduits;
 
 	// Constructeur vide
 	public ProduitManageBean() {
 		this.produit = new Produit();
 		this.indice = false;
-		this.uf=new UploadedFileWrapper();
+		this.uf = new UploadedFileWrapper();
 	}
 
 	// Méthodes Session
@@ -98,8 +99,23 @@ public class ProduitManageBean implements Serializable {
 		this.uf = uf;
 	}
 
-	// Méthodes
+	public List<Produit> getProduits() {
+		return produits;
+	}
 
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
+	}
+
+	public List<Produit> getFiltreProduits() {
+		return filtreProduits;
+	}
+
+	public void setFiltreProduits(List<Produit> filtreProduits) {
+		this.filtreProduits = filtreProduits;
+	}
+
+	// Méthodes
 
 	// ajouter un produit à la liste
 	public String ajouterProduit() {
