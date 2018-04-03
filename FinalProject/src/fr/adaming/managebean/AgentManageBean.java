@@ -43,7 +43,7 @@ public class AgentManageBean implements Serializable {
 
 	// Constructeurs
 	public AgentManageBean() {
-		this.agent = new Agent() ;
+		this.agent= new Agent();
 		this.client=new Client();
 	}
 
@@ -110,7 +110,6 @@ public class AgentManageBean implements Serializable {
 
 		Agent aOut = agentService.isExist(this.agent);
 		
-		
 		this.listeProduit=produitService.getAllProduit();   
 		this.listeCetegorie=categorieService.consultationCategorie();
 		this.listeClient=clientService.getAllListClientService();
@@ -121,6 +120,9 @@ public class AgentManageBean implements Serializable {
 			
 			// Ajouter l'agent comme attribut de la session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("agentListe", aOut);
+			
+			System.out.println(aOut.getMdp());
+			
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitsListe", this.listeProduit);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe", this.listeCetegorie);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clientliste", this.listeClient);

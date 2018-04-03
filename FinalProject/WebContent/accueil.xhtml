@@ -16,44 +16,40 @@
 	<ui:composition template="/template/layout.xhtml">
 		<ui:define name="corps">
 
-
 			<h:form>
 				<p:carousel value="#{sessionScope.produitListe}"
-					headerText="Responsive" var="pr" itemStyle="text-align:center"
+					headerText="Produits" var="pr" itemStyle="text-align:center"
 					responsive="true">
+
 					<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 						columnClasses="label,value" layout="grid"
 						styleClass="ui-panelgrid-blank">
+
 						<f:facet name="header">
-							<p:graphicImage name="#{pr.image}" />
+							<h:graphicImage value="#{pr.image}" />
 						</f:facet>
+
 						<h:outputText value="Id:" />
 						<h:outputText value="#{pr.id}" />
 
-						<h:outputText value="designation" />
+						<h:outputText value="Désignation:" />
 						<h:outputText value="#{pr.designation}" />
 
-						<h:outputText value="description" />
+						<h:outputText value="Description:" />
 						<h:outputText value="#{pr.description}" />
 
-						<h:outputText value="Price" />
-						<h:outputText value="€#{pr.prix}" />
+						<h:outputText value="Prix:" />
+						<h:outputText value="#{pr.prix}" />
+
+						<h:outputText value="Quantité:" />
+						<h:outputText value="#{pr.quantite}" />
 
 					</p:panelGrid>
-					<f:facet name="footer">
 
-					</f:facet>
 				</p:carousel>
-
 			</h:form>
 
-			<h:form>
-				<h:panelGrid columns="2">
-		Numero:<h:inputText value="#{prMB.produit}"></h:inputText>
-		quantite :<h:inputText value="#{prMB.produit.quantite}"></h:inputText>
-					<h:commandButton value="Ajouter Panier" action="#{paMB.AddPanier}"></h:commandButton>
-				</h:panelGrid>
-			</h:form>
+			
 		</ui:define>
 
 	</ui:composition>
