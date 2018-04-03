@@ -26,14 +26,29 @@
 		<param-value>Development</param-value>
 	</context-param>
 
+<<<<<<< HEAD
 <!-- Charger le thème de Primefaces -->
+=======
+ <!-- 	
+	Charger le thème de Primefaces -->
+>>>>>>> branch 'master' of https://github.com/couscous31/FinalProject.git
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>humanity</param-value>
+<<<<<<< HEAD
 	</context-param>
 	
 	<welcome-file-list>
 		<welcome-file>accueil.xhtml</welcome-file>
 	</welcome-file-list>
+=======
+	</context-param>  
+	
+	
+	<welcome-file-list>
+		<welcome-file>accueil.xhtml</welcome-file>
+	</welcome-file-list>
+	
+>>>>>>> branch 'master' of https://github.com/couscous31/FinalProject.git
 
 </web-app>

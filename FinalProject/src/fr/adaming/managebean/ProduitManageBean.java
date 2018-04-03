@@ -128,7 +128,10 @@ public class ProduitManageBean implements Serializable {
 			// récup et mettre à jour la liste
 			List<Produit> liste = produitService.getAllProduit();
 			maSession.setAttribute("produitListe", liste);
-
+//			for(Produit pr:liste){
+//				System.out.println(pr.getPrix());
+//			}
+			
 			return "accueilAgent";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ajout produit : fail !!!"));

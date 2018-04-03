@@ -57,12 +57,14 @@
 						<h:graphicImage value="#{pr.image}" />
 					</p:column>
 
-					<h:form>
-				<h:panelGrid columns="2">
-					<h:commandButton value="Ajouter Panier" action="#{paMB.AddPanier}"></h:commandButton>
-				</h:panelGrid>
-			</h:form>
-				</p:dataTable>
+					<p:toolbar>
+						<f:facet name="left">
+							<p:commandButton value="Ajouter" update="panel" ajax="false"
+								action="#{paMB.AddPanier}" style="margin-right:20px;" />
+						</f:facet>
+					</p:toolbar>
+
+			</p:dataTable>
 
 
 			</h:form>

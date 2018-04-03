@@ -10,7 +10,7 @@ import javax.faces.bean.RequestScoped;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import fr.adaming.service.EnvoyerMail;
+
 import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
@@ -18,6 +18,7 @@ import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
 import fr.adaming.service.ICommandeService;
 import fr.adaming.service.ILigneCommandeService;
+import fr.adaming.service.Mail;
 
 @ManagedBean(name = "paMB")
 @RequestScoped
@@ -25,7 +26,7 @@ public class PanierManageBean implements Serializable {
 
 	@EJB
 	ICommandeService commandeService;
-	
+
 	@EJB
 	ILigneCommandeService lignecommandeService;
 
@@ -33,9 +34,11 @@ public class PanierManageBean implements Serializable {
 
 	// //Attribut du ManageBean
 	private Client client;
-	private Commande commande;
+
 	private List<LigneCommande> listeco;
+
 	private List<Produit> listepro;
+	private Commande commande;
 	private Produit produit;
 	private int quantite = 0;
 	//
@@ -43,7 +46,10 @@ public class PanierManageBean implements Serializable {
 	FacesContext context = FacesContext.getCurrentInstance();
 
 	public PanierManageBean() {
-		super();
+		this.quantite = 0;
+		this.produit = new Produit();
+		this.client = new Client();
+		this.commande = new Commande();
 		// Recuperer la session
 		maSession = (HttpSession) context.getExternalContext().getSession(false);
 		// Recuperer le panier dans la session
@@ -95,7 +101,7 @@ public class PanierManageBean implements Serializable {
 
 			panier.AjouterProduit(this.produit, quantite);
 			String msg3 = "Le produit a bien ete ajouté";
-			this.listeco=lignecommandeService.getAllListLcService();
+			this.listeco = lignecommandeService.getAllListLcService();
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("listelc", this.listeco);
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg3, null));
 			this.produit = null;
@@ -116,9 +122,10 @@ public class PanierManageBean implements Serializable {
 	public void validatecommande() {
 
 		commandeService.recordCommande(this.panier, this.client);
-		//Envoi d'un mail au client
-		EnvoyerMail.envoyerMessageAjout(client.getEmail());
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicitation pour votre commande!", null));
+		// Envoi d'un mail au client
+		Mail.envoyerMessageAjout(client.getEmail());
+		context.addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicitation pour votre commande!", null));
 
 	}
 

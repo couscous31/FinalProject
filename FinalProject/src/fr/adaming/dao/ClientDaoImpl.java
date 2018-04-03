@@ -19,7 +19,7 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public List<Client> getAllListClient() {
 
-		String req = "SELECT cl FROM Client";
+		String req = "SELECT cl FROM Client cl";
 
 		Query query = em.createQuery(req);
 

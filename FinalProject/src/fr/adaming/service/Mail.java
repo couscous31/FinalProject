@@ -1,15 +1,15 @@
 package fr.adaming.service;
 
-import java.net.PasswordAuthentication;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import com.sun.net.httpserver.Authenticator;
-import com.sun.xml.internal.fastinfoset.sax.Properties;
 
 public class Mail {
 	
@@ -50,6 +50,7 @@ public static void envoyerMessageAjout (String mailRecup){
 			
 			
 
+
 	         // Corp du message
 	         message.setContent("<h1>Bonjour, votre panier a bien été validé. <br/> Vous recevrez votre commade dans les plus brefs délai ; <br/>. Cordailement</h1>", "text/html");
 
@@ -60,7 +61,7 @@ public static void envoyerMessageAjout (String mailRecup){
 	         mex.printStackTrace();
 	      }
 		
-		//instanciation dans le MB : Mail.envoyerMessageAjout("adresse");
+		//instanciation dans le MB : Mail.envoyerMessageAjout("adresse");		
 	}
 
 }

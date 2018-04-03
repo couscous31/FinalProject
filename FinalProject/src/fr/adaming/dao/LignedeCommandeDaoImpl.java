@@ -18,7 +18,7 @@ public class LignedeCommandeDaoImpl implements ILigneCommandeDao {
 	@Override
 	public List<LigneCommande> getAllListLc() {
 
-		String req = "SELECT lc FROM LigneCommande";
+		String req = "SELECT lc FROM LigneCommande lc";
 
 		Query query = em.createQuery(req);
 
