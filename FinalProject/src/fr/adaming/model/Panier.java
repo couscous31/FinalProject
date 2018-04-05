@@ -84,6 +84,8 @@ public class Panier implements Serializable {
 		}
 		return total;
 	}
+	
+	
 
 	// Supprimer
 	public void Supprimerpro(Produit pr) {
