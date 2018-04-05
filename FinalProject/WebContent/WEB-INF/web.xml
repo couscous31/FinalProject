@@ -28,10 +28,14 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Charger le thème de Primefaces -->
 =======
  <!-- 	
 	Charger le thème de Primefaces -->
+>>>>>>> branch 'master' of https://github.com/couscous31/FinalProject.git
+=======
+	<!--Charger le thème de Primefaces -->
 >>>>>>> branch 'master' of https://github.com/couscous31/FinalProject.git
 =======
 	<!--Charger le thème de Primefaces -->
@@ -41,11 +45,18 @@
 		<param-value>humanity</param-value>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	</context-param>
 	
+=======
+	</context-param>
+
+
+>>>>>>> branch 'master' of https://github.com/couscous31/FinalProject.git
 	<welcome-file-list>
 		<welcome-file>accueil.xhtml</welcome-file>
 	</welcome-file-list>
+<<<<<<< HEAD
 =======
 	</context-param>  
 	
@@ -60,6 +71,9 @@
 	</welcome-file-list>
 <<<<<<< HEAD
 	
+>>>>>>> branch 'master' of https://github.com/couscous31/FinalProject.git
+=======
+
 >>>>>>> branch 'master' of https://github.com/couscous31/FinalProject.git
 =======
 
