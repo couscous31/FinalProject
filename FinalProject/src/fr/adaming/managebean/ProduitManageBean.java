@@ -47,7 +47,7 @@ public class ProduitManageBean implements Serializable {
 		this.uf = new UploadedFileWrapper();
 	}
 
-	// Méthodes Session
+	// Méthodes Sessions
 	@PostConstruct
 	public void init() {
 		this.produits=produitService.getAllProduit();
