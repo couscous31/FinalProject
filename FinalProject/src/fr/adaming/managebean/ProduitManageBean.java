@@ -47,9 +47,11 @@ public class ProduitManageBean implements Serializable {
 		this.uf = new UploadedFileWrapper();
 	}
 
-	// Méthodes Session
+	// Méthodes Sessions
 	@PostConstruct
 	public void init() {
+		this.produits=produitService.getAllProduit();
+		
 		// récup de la session ouverte
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
