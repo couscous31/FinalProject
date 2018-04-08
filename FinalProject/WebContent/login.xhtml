@@ -4,19 +4,46 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
-	<title>login</title>
+	<title>Connexion</title>
+	<h:outputStylesheet library="css" name="monStyle.css" />
 </h:head>
-<h:body>
 
-		<h:form>
-			<h:panelGrid columns="2">
-				Mail:<h:inputText value="#{aMB.agent.mail}"></h:inputText>
-				Password : <h:inputText value="#{aMB.agent.mdp}"></h:inputText>
+<h:body style="background-color: rgb(64,64,64);">
 
-				<h:commandButton value="Connectez vous" action="#{aMB.seConnecter}"></h:commandButton>
+	<div class="wrapper">
+		<div class="container">
+			<h1>Connectez-vous</h1>
+			
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel>Mail : </h:outputLabel>
+					<h:inputText value="#{aMB.agent.mail}" />
+					<h:outputLabel>Mot de passe : </h:outputLabel>
+					<h:inputText value="#{aMB.agent.mdp}" />
 
-			</h:panelGrid>
-		</h:form>
+					<h:commandButton value="Se connecter" action="#{aMB.seConnecter}" />
+
+				</h:panelGrid>
+			</h:form>
+			
+		</div>
+		
+		<ul class="bg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+	</div>
+	
 </h:body>
 </html>
